@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8">
+			<title>ARK: Survival Evolved game.ini Rechner</title>
+		<meta name="author" content="Jürgen Ofner">
+		<meta name="description" content="Berechnen der ARK: Survival Evolved game.ini Datei für Level und Engram Punkte">
+		<meta name="keywords" content="ARK, Level, Engram, game.ini">
+		<style>
+			table {
+				border: 3px;
+				text-align: center;
+				width: 90%;
+			}
+			td {
+				border: 1px;
+				text-align: right;
+			}
+			.center {
+				text-align: center;
+			}
+			h3 {
+				text-align: center;
+			}
+			img {
+				width: 75px;
+				height: 50px;
+			}
+		</style>
+	</head>
+<body>
+
+
+<h3>ARK: Survival Evolved game.ini Rechner</h3>
+
+<h5>Berechnet eine game.ini aus den angegebenen Daten</h5>
+
+<p>
+Dabei ist zu beachten:
+</p>
+
+<ul>
+	<li>Die Berechungskurve ist die Basis einer Exponentialfunktion die zur berechung der Werte benutzt wird. 1 ist demzufolge eine Gerade, heist, alle Werte sind gleich weit auseinader. Um so grösser die Basis um so kleiner werden die Abstände und Werte in unteren Level und um so höher in oberen Level.</li>
+	<li>Da die Berechnung Mathematisch ist sind die Abstände völlig fliesend und nicht wie in orginal geradlinig über mehrere Levels und dann mit großen Sprüngen aufgeteilt.</li>
+	<li>Die Dinosaurier Level sind die Gezähmten Level, heist, geben an um wieviel Levels man ein gezähmten Dinosaurier noch weiter leveln kann. z.B bei einen Wert von 100 kann man ein gezämtes Tier mit Level 30 auf 130 bringen oder mit Level 65 auf 165.
+</ul>
+
+<h5>Einbauen in das Spiel</h5>
+
+<ol>
+	<li>In das Spiele config Verzeichnis gehen:
+		<ul>
+			<li> Local : .../Steam/SteamApps/common/ARK/ShooterGame/Saved/Config/WindowsNoEditor</li>
+			<li> Server Windows : .../Steam/SteamApps/common/ARK/ShooterGame\Saved\Config\Windows\</li>
+			<li> Server Linux : ...[\Steam\SteamApps\common\ARK\]ShooterGame\Saved\Config\Linux\</li>
+		</ul>
+	<li>Die vorhandene leere game.ini umbenennen z.B. in game-old.ini</li>
+	<li>Die berechnete Datei von der Seite (ARK_game.ini) dort kopieren</li>
+	<li>Die Datei umbenennen zu game.ini</li>
+	<li>Die ARK_game.ini gut aufheben fals ein Update die game.ini überschreibt</li>
+</ol>
+
+<p>
+Hat man bereits eine game.ini mit anderen Inhalten die nichts mit den Level oder den Engram Punkten zu tun haben mus man diese editiren und den Inhalt von der ARK_game.ini einfügen.
+</p>
+
+<hr />
+<br />
+	
+<form action="ARK_game_ini_Rechner_test.php">
+	<table>
+		<tr><th colspan="2">Spieler</th><th></tr>
+		<tr>
+			<td><label for="maxPlv">Maximales Level: <input name="maxPlv" id="maxPlv" type="number" min="2" step="1" value="96"> </label></td>
+			<td><label for="maxExP">Maximale Erfahrungspunkte: <input name="maxExP" id="maxExP" type="number" min="100" step="100" value="1083600"> </label></td>
+			<td><label for="facktorP">Berechnungskurve: <input name="facktorP" id="facktorP" type="number" min="0.1" step="0.1" value="9.5"> </label></td>
+		</tr>
+		<tr>
+			<td>
+			<td><label for="maxEgP">Maximale Engram Punkte: <input name="maxEgP" id="maxEgP" type="number" min="100" step="100" value="2900"> </label></td>
+			<td><label for="facktorE">Berechnungskurve: <input name="facktorE" id="facktorE" type="number" min="0.1" step="0.1" value="2"> </label></td>
+		</tr>
+		<tr>
+			<td>
+			<td><label for="maxElv">Level für Maximale Engram Punkte: <input name="maxElv" id="maxElv" type="number" min="2" step="1" value="96"> </label></td>
+			<td><label for="statP">Status Faktor: <input name="statP" id="statP" type="number" min="0.1" step="0.1" value="1"> </label></td>
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr><th colspan="2">Dinosaurier</th><th></tr>
+		<tr>
+			<td><label for="maxDlv">Maximales Level: <input name="maxDlv" id="maxDlv" type="number" min="1" step="1" value="62"> </label></td>
+			<td><label for="maxExD">Maximale Erfahrungspunkte: <input name="maxExD" id="maxExD" type="number" min="100" step="100" value="415000"> </label></td>
+			<td><label for="facktorD">Berechnungskurve: <input name="facktorD" id="facktorD" type="number" min="0.1" step="0.1" value="9.5"> </label></td>
+		</tr>
+		<tr>
+			<td>
+			<td><label for="statD">Status Faktor gezämt: <input name="statD" id="statD" type="number" min="0.1" step="0.1" value="1"> </label></td>
+			<td><label for="statW">Status Faktor wild: <input name="statW" id="statW" type="number" min="0.1" step="0.1" value="1"> </label></td>
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<td>Creativ Mode:
+			<td><label for="Clv">bis Level: <input name="Clv" id="Clv" type="number" min="0" step="1" value="0"> </label></td>
+			<td><label for="Cfaktor">Erfahrungspunkte 1/ <input name="Cfaktor" id="Cfaktor" type="number" min="1" step="1" value="2"> </label></td>
+		</tr>
+		<tr>
+			<td class="center"><button type="submit" name="ini" value="i">Berechnen</button></th>
+			<td class="center"><button type="submit" name="ini" value="r">( Raw-Daten )</button></th>
+			<td class="center"><button type="reset">Zurücksetzen</button></th>
+		</tr>
+	</table>
+</form>
+
+<br />
+<hr />
+<a href="http://php.net/"><img src="php.png" alt="PHP"></a><a href="https://validator.w3.org/"><img src="w3c.png" alt="W3C"></a>
+</body>
+</html>
