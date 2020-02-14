@@ -1,4 +1,4 @@
-# ARK-game.ini-Rechner
+# ARK game.ini Rechner
 
 Berechnet eine game.ini aus den angegebenen Daten
 
